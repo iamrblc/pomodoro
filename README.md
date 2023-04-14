@@ -1,6 +1,6 @@
 # 🍅 A CUSTOMIZABLE POMODORO SCHEDULER 🍅
 ## 🍅 BACKGROUND
-As a freelancer, developing good time management practices was crucial for me, especially as someone with ADHD. I needed a schedule that allowed me to stay focused as much as possible. One day, after struggling to stay on track, I remembered how *productive* school days used to be with 45-minute lessons devoted to different *projects*... I mean, subjects like math, literature, biology, or even gym class.
+As a freelancer, developing good time management practices was crucial for me, especially as someone with ADHD. I needed a routine that allowed me to stay focused as much as possible. One day, after struggling to stay on track, I remembered how *productive* school days used to be with 45-minute lessons devoted to different *projects*... I mean, subjects like math, literature, biology, or even gym class.
 
 So, I decided to create a mock timetable that mimicked a school day, and surprisingly, it worked! I shared this technique with a friend, who told me about the Pomodoro Method, a similar time management technique. I decided to check it out (thanks, Houssem!).
 
