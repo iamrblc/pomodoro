@@ -6,6 +6,12 @@ So, I decided to create a mock timetable that mimicked a school day, and surpris
 
 Although the Pomodoro Method worked for me in many instances, I noticed that 5-minute breaks sometimes disrupted my flow, making it hard to get back on track. I wanted a Pomodoro schedule that I could customize to my current mood, but I couldn't find one that was freely customizable or affordable.
 
+## ⚠️ IMPORTANT NOTICE BEFORE YOU MOVE ON
+Don't take productivity too seriously no matter what you see on linked in. Keep in mind that these sites often act as toxic displays of anxiety and good places for circle jerk. Nothing more. 
+Whenever I post on productivity I do it with a rather sarcastic tone. So is productivity a complete BS? Of course not. But the dogmatic approach in the corporate world is highly, highly, highly overrated and unhealthy. 
+
+**Take breaks, step back, enjoy life!**
+
 ## 🍅 WHAT DOES THIS CODE DO?
 First it asks you
 - when you would like to start your working day? (Default is the time when you run the code.)
