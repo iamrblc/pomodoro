@@ -73,11 +73,12 @@ def subsequent_pomodoros(pomodoro_count, pomodoro_start, pomodoro_duration, time
 pomodoro_count, pomodoro_end = first_pomodoro(day_start_time, pomodoro_duration, timetable)
 
 for i in range(NUMBER_OF_POMODOROS - 1):
-    # Calculate time till lunch and time till dog walk
-    time_till_lunch = abs(lunch_time.hour * 60 + lunch_time.minute - pomodoro_end.hour * 60 - pomodoro_end.minute)
-    time_till_dog_walk = abs(dog_walk_time.hour * 60 + dog_walk_time.minute - pomodoro_end.hour * 60 - pomodoro_end.minute)
+    # Lunch_t, dogwalk_t and pomend_t are times after midnight in minutes
+    lunch_t = lunch_time.hour * 60 + lunch_time.minute
+    dogwalk_t = dog_walk_time.hour * 60 + dog_walk_time.minute
+    pomend_t = pomodoro_end.hour * 60 + pomodoro_end.minute
 
-    if time_till_lunch < pomodoro_duration.seconds / 60 / 2 or time_till_dog_walk < pomodoro_duration.seconds / 60 / 2:
+    if (lunch_t - (POMODORO / 2)) <= pomend_t <= (lunch_t + (POMODORO)) or (dogwalk_t - (POMODORO / 2)) <= pomend_t <= (dogwalk_t + (POMODORO)):
         # If time till lunch or time till dog walk is less than half of pomodoro duration, add recreation
         pomodoro_start = add_recess(pomodoro_end, recess_type='recreation', timetable=timetable)
         pomodoro_count, pomodoro_end = subsequent_pomodoros(pomodoro_count, pomodoro_start, pomodoro_duration, timetable)
