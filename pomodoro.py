@@ -239,27 +239,9 @@ pygame.init()
 
 print(f'Your work day has started at {start_beep_times[0]}. And it will end at {end_beep_times[-1]}.')
 
-
 # Loop through all beep times and play appropriate beep sound
 beep_times = sorted(start_beep_times + alert_beep_times + end_beep_times)
 for beep_time in beep_times:
-    current_time = time.strftime('%H:%M')
-    while current_time != beep_time:
-        current_time = time.strftime('%H:%M')
-        time.sleep(1)
-    if beep_time in start_beep_times:
-        play_beep('start_beep.mp3')
-        print(f'The time is {beep_time}. It\'s time to start a pomodoro.')
-    elif beep_time in alert_beep_times:
-        play_beep('alert_beep.mp3')
-        print(f'The time is {beep_time}. This pomodoro ends in 5 minutes.')
-    elif beep_time in end_beep_times:
-        play_beep('end_beep.mp3')
-        print(f'The time is {beep_time}. It\'s time to take a break.')
-    time.sleep(1)
-
-# Loop through all beep times and play appropriate beep sound
-for beep_time in start_beep_times + alert_beep_times + end_beep_times:
     current_time = time.strftime('%H:%M')
     while current_time != beep_time:
         current_time = time.strftime('%H:%M')
