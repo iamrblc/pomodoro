@@ -22,13 +22,18 @@ I have set the default parameters to my own preferences with
 
 All the above parameters can be adjusted at the beginning.
 It starts the working day at the current time by default. (Can be adjusted.)
-The code felxibly adjusts lunch and dog walk breaks to fit in with the pomodoro
+The code flexibly adjusts lunch and dog walk breaks to fit in with the pomodoro
 schedule.
 
 The code returns a timetable.
-It DOES NOT set alarms or notifications. It was not a requirement for me but
-it can be easily added as a feature. The "timetable" dictionary is a friendly
-format for that. :)
+It also signals the start and end of pomodoros and also alerts you five minutes
+before the end of the current pomodoro.
+
+Please note that although the beeper module works, it's not yet fully integrated
+into the code. I'm still working on refactoring the code.
+
+Feel free to use this code in your own projects. If you do, please give credit.
+Thanks. Did you have any questions, feel free to contact me: robilaci@gmail.com
 '''
 
 #############################
@@ -198,12 +203,6 @@ print(f"{column_headers[0]:<12} {column_headers[1]:<12} {column_headers[2]:<12} 
 for row in table_data:
     print(f"{row[0]:<12} {row[1]:<12} {row[2]:<12} {row[3]:<12}")
 
-'''
-Feel free to use this code in your own projects. If you do, please give credit. Thanks.
-If you have any questions, feel free to ask: robilaci@gmail.com
-
-And don't take productivity too seriously. Enjoy your life. :)
-'''
 
 #######################################################
 ## THE FOLLOWING CODE IS FOR TESTING A BEEPER MODULE ##
