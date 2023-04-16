@@ -204,3 +204,66 @@ If you have any questions, feel free to ask: robilaci@gmail.com
 
 And don't take productivity too seriously. Enjoy your life. :)
 '''
+
+#######################################################
+## THE FOLLOWING CODE IS FOR TESTING A BEEPER MODULE ##
+##   IT'S NOT YET INTEGRATED INTO THE MAIN PROGRAM   ##
+#######################################################
+
+import time
+import pygame
+
+# Create beeptime list from the timetable dictionary
+start_beep_times = []
+alert_beep_times = []
+end_beep_times = []
+for key, value in timetable.items():
+    if key.startswith('pomodoro'):
+        start_beep_times.append(value[0])
+        end_beep_times.append(value[1])
+        # Convert value[1] to datetime.time object
+        end_time = datetime.datetime.strptime(value[1], '%H:%M').time()
+        # Subtract 5 minutes from end_time
+        alert_time = (datetime.datetime.combine(datetime.date.min, end_time) - datetime.timedelta(minutes=5)).time()
+        # Convert alert_time to string
+        alert_beep_times.append(alert_time.strftime('%H:%M'))
+
+def play_beep(sound_file):
+    pygame.mixer.init()
+    pygame.mixer.music.load(sound_file)
+    pygame.mixer.music.play()
+    time.sleep(1)
+    pygame.mixer.music.stop()
+
+# Initialize Pygame
+pygame.init()
+
+# Start beeps
+for beep_time in start_beep_times:
+    current_time = time.strftime('%H:%M')
+    while current_time != beep_time:
+        current_time = time.strftime('%H:%M')
+        time.sleep(1)
+    play_beep('start_beep.mp3')
+    time.sleep(1)
+
+# Alert beeps
+for beep_time in alert_beep_times:
+    current_time = time.strftime('%H:%M')
+    while current_time != beep_time:
+        current_time = time.strftime('%H:%M')
+        time.sleep(1)
+    play_beep('alert_beep.mp3')
+    time.sleep(1)
+
+# End beeps
+for beep_time in end_beep_times:
+    current_time = time.strftime('%H:%M')
+    while current_time != beep_time:
+        current_time = time.strftime('%H:%M')
+        time.sleep(1)
+    play_beep('end_beep.mp3')
+    time.sleep(1)
+
+# Clean up pygame
+pygame.mixer.quit()
