@@ -204,3 +204,77 @@ If you have any questions, feel free to ask: robilaci@gmail.com
 
 And don't take productivity too seriously. Enjoy your life. :)
 '''
+
+#######################################################
+## THE FOLLOWING CODE IS FOR TESTING A BEEPER MODULE ##
+##   IT'S NOT YET INTEGRATED INTO THE MAIN PROGRAM   ##
+#######################################################
+
+import time
+import pygame
+
+# Create beeptime list from the timetable dictionary
+start_beep_times = []
+alert_beep_times = []
+end_beep_times = []
+for key, value in timetable.items():
+    if key.startswith('pomodoro'):
+        start_beep_times.append(value[0])
+        end_beep_times.append(value[1])
+        # Convert value[1] to datetime.time object
+        end_time = datetime.datetime.strptime(value[1], '%H:%M').time()
+        # Subtract 5 minutes from end_time
+        alert_time = (datetime.datetime.combine(datetime.date.min, end_time) - datetime.timedelta(minutes=5)).time()
+        # Convert alert_time to string
+        alert_beep_times.append(alert_time.strftime('%H:%M'))
+
+def play_beep(sound_file):
+    pygame.mixer.init()
+    pygame.mixer.music.load(sound_file)
+    pygame.mixer.music.play()
+    time.sleep(1)
+    pygame.mixer.music.stop()
+
+# Initialize Pygame
+pygame.init()
+
+print(f'Your work day has started at {start_beep_times[0]}. And it will end at {end_beep_times[-1]}.')
+
+
+# Loop through all beep times and play appropriate beep sound
+beep_times = sorted(start_beep_times + alert_beep_times + end_beep_times)
+for beep_time in beep_times:
+    current_time = time.strftime('%H:%M')
+    while current_time != beep_time:
+        current_time = time.strftime('%H:%M')
+        time.sleep(1)
+    if beep_time in start_beep_times:
+        play_beep('start_beep.mp3')
+        print(f'The time is {beep_time}. It\'s time to start a pomodoro.')
+    elif beep_time in alert_beep_times:
+        play_beep('alert_beep.mp3')
+        print(f'The time is {beep_time}. This pomodoro ends in 5 minutes.')
+    elif beep_time in end_beep_times:
+        play_beep('end_beep.mp3')
+        print(f'The time is {beep_time}. It\'s time to take a break.')
+    time.sleep(1)
+
+# Loop through all beep times and play appropriate beep sound
+for beep_time in start_beep_times + alert_beep_times + end_beep_times:
+    current_time = time.strftime('%H:%M')
+    while current_time != beep_time:
+        current_time = time.strftime('%H:%M')
+        time.sleep(1)
+    if beep_time in start_beep_times:
+        play_beep('start_beep.mp3')
+        print(f'The time is {beep_time}. It\'s time to start a pomodoro.')
+    elif beep_time in alert_beep_times:
+        play_beep('alert_beep.mp3')
+        print(f'The time is {beep_time}. This pomodoro ends in 5 minutes.')
+    elif beep_time in end_beep_times:
+        play_beep('end_beep.mp3')
+        print(f'The time is {beep_time}. It\'s time to take a break.')
+    time.sleep(1)
+
+# Clean up pygame
+pygame.mixer.quit()
